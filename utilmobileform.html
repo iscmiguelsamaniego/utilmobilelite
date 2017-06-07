@@ -1,0 +1,83 @@
+    <html>
+    <head>
+         <script src="js/liteutils.js"></script> 
+
+        </head>
+
+        <body>
+
+    <!--<form method="post" action="" id="opendb">
+    <input type="file" name="pesca_db" accept=".sqlite">
+        <input type="submit" id="confirmar" name="confirmar" value="Confirmar">
+    </form>-->
+
+            <p>Query values from db</p><br/>
+            
+            <div id="tagshow"></div>
+
+            <script>
+    function loadBinaryFile(path,success) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", path, true); 
+        xhr.responseType = "arraybuffer";
+        xhr.onload = function() {
+            var data = new Uint8Array(xhr.response);
+            var arr = new Array();
+            for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+            success(arr.join(""));
+        };
+        xhr.send();
+    };
+
+
+    loadBinaryFile('./pesca_db.sqlite', function(data){
+        var db = new SQL.Database(data);
+
+        var res = db.exec("SELECT * FROM GeoPuntosPoligono");
+        //document.getElementById("tagshow").textContent = JSON.stringify(res);
+        
+        var queryresult = JSON.stringify(res);
+        var mainarray = JSON.parse(queryresult);
+        var exparse = mainarray[0].values;
+        
+        document.getElementById("tagshow").textContent = exparse;
+        
+        var ids = {};
+        var latitudes = {};
+        var longitudes = {};
+        //mainarray[0].values
+            //for(var x = 0; x < mainarray.length; x++){
+              //  ids = mainarray[x].values;
+                
+                //document.getElementById("tagshow").textContent = mainarray[0].values;
+            //}
+        
+                
+        
+        
+       /*
+        var arr = [ "a", "b", "c" ];
+    for(var i=0; i < arr.length; i++) {
+        console.log(arr[i]);
+    }
+       */
+        
+    
+        //var tr;
+        //for (var i = 0; i < json.length; i++) {
+            //tr = $('<tr/>');
+          //  tr.append("<td>" + json[i].id + "</td>");
+            //tr.append("<td>" + json[i].latitude + "</td>");
+            //tr.append("<td>" + json[i].longitude + "</td>");
+            //$('table').append(tr);
+            
+      //    document.getElementById("tagshow").textContent = json[i].id;
+    //}
+        //document.getElementById("tagshow").textContent = ('table').append(tr);
+        
+        
+    });
+</script>
+
+        </body>
+    </html>
