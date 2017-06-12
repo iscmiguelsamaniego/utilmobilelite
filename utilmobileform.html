@@ -1,83 +1,38 @@
-    <html>
+<html>
     <head>
-         <script src="js/liteutils.js"></script> 
+    </head>
 
-        </head>
+    <body>
 
-        <body>
+        <h1 align="center"> Utilerias para BD moviles</h1>
 
-    <!--<form method="post" action="" id="opendb">
-    <input type="file" name="pesca_db" accept=".sqlite">
-        <input type="submit" id="confirmar" name="confirmar" value="Confirmar">
-    </form>-->
-
-            <p>Query values from db</p><br/>
-            
-            <div id="tagshow"></div>
-
-            <script>
-    function loadBinaryFile(path,success) {
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", path, true); 
-        xhr.responseType = "arraybuffer";
-        xhr.onload = function() {
-            var data = new Uint8Array(xhr.response);
-            var arr = new Array();
-            for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
-            success(arr.join(""));
-        };
-        xhr.send();
-    };
+        <table  align="center">
+            <tr>
+                <th><h3 align="right">- Version Beta 1.0 -</h3></th>
+                <td><img src="images/alphalogo.png" alt="Alpha logo" style="width:130px;height:40px;" align="left" hspace="50"></td>
+            </tr>
+        </table>
+        <br/>
 
 
-    loadBinaryFile('./pesca_db.sqlite', function(data){
-        var db = new SQL.Database(data);
-
-        var res = db.exec("SELECT * FROM GeoPuntosPoligono");
-        //document.getElementById("tagshow").textContent = JSON.stringify(res);
-        
-        var queryresult = JSON.stringify(res);
-        var mainarray = JSON.parse(queryresult);
-        var exparse = mainarray[0].values;
-        
-        document.getElementById("tagshow").textContent = exparse;
-        
-        var ids = {};
-        var latitudes = {};
-        var longitudes = {};
-        //mainarray[0].values
-            //for(var x = 0; x < mainarray.length; x++){
-              //  ids = mainarray[x].values;
+        <table  align="center">
+            <form method="post" action="php/upload.php" enctype="multipart/form-data">
+                <tr>
+                    <th><input type="file" name="pesca_db" id="pesca_db" accept=".sqlite"></th>
+                    <td><input type="submit" value="Cargar BD"  name="submit"></td>
+                </tr>
                 
-                //document.getElementById("tagshow").textContent = mainarray[0].values;
-            //}
-        
-                
-        
-        
-       /*
-        var arr = [ "a", "b", "c" ];
-    for(var i=0; i < arr.length; i++) {
-        console.log(arr[i]);
-    }
-       */
-        
-    
-        //var tr;
-        //for (var i = 0; i < json.length; i++) {
-            //tr = $('<tr/>');
-          //  tr.append("<td>" + json[i].id + "</td>");
-            //tr.append("<td>" + json[i].latitude + "</td>");
-            //tr.append("<td>" + json[i].longitude + "</td>");
-            //$('table').append(tr);
+                </form>
+                <tr>
+                    <th>
+                        <select>
+                            <option value="tablas">tablas</option>
+                        </select>
+                    </th>
+                </tr>
+                <tr><th> <button type="button">Simplificar</button> </th></tr>
             
-      //    document.getElementById("tagshow").textContent = json[i].id;
-    //}
-        //document.getElementById("tagshow").textContent = ('table').append(tr);
-        
-        
-    });
-</script>
+        </table>
 
-        </body>
-    </html>
+    </body>
+</html>
