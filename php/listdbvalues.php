@@ -67,4 +67,8 @@ DUMP SQLITE DATABASE
 https://stackoverflow.com/questions/22197690/sqlite3-dump-database-through-php
 
 
+REFERENCIAS AJAX MEJORAR INTERACCION Y DISEÑO
+https://www.formget.com/submit-form-using-ajax-php-and-jquery/
+http://phppot.com/jquery/php-contact-form-with-jquery-ajax/
+
 -->
