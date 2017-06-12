@@ -1,2 +1,2 @@
 # utilmobilelite
-It's a utility for works with sqlite and javascript
+It's a utility for works with sqlite and php
