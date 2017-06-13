@@ -17,27 +17,27 @@ $result = $db->query($query);
 	<title>Data List</title>
 </head>
 <body>
-	<div style="width: 500px; margin: 20px auto;">
-		<!--<a href="insert.php">Add New</a>-->
-		<table width="100%" cellpadding="5" cellspacing="1" border="1">
-			<tr>
-				<td>Id</td>
-				<td>Latitud</td>
-				<td>Longitud</td>
-			</tr>
-			<?php while($row = $result->fetchArray()) {?>
-			<tr>
-				<td><?php echo $row['id'];?></td>
-				<td><?php echo $row['latitud'];?></td>
-                <td><?php echo $row['longitud'];?></td>
-				<!--<td>
-					<a href="update.php?id=//<?php echo $row['rowid'];?>">Edit</a> | 
-					<a href="delete.php?id=//<?php echo $row['rowid'];?>"  confirm('Are you sure?');">Delete</a>
-				</td>-->
-			</tr>
-			<?php } ?>
-		</table>
-	</div>
+
+<?php
+
+//$array = array();
+
+while($row = $result->fetchArray()){
+$values = array(
+//'type' => 'Feature',
+//'geometry' => array( 
+//'type' => 'Polygon',
+//'coordinates' => array(array(array(
+$row['latitud'], $row['longitud']);
+
+echo json_encode($values);
+}
+
+//echo json_encode($array);
+
+?>
+
+
 </body>
 </html>
 

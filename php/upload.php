@@ -21,10 +21,9 @@ if ($uploadOk == 0) {
 } else {
     if (move_uploaded_file($_FILES["pesca_db"]["tmp_name"], $target_file)) {
         echo "El archivo ". basename( $_FILES["pesca_db"]["name"]). " ha sido cargado.";
+
+include "listdbvalues.php";
         
-         $redirect_url = "/utilmobileform.html";
-        header("Location: " . $redirect);
-        exit();
     } else {
         echo "Lo siento hubo un error al cargar su archivo.";
     }
