@@ -4,7 +4,7 @@
 include "db_connection.php";
 
 // Makes query with rowid
-$query = "SELECT * FROM GeoPuntosPoligono";
+$query = "SELECT * FROM GeoPuntosPoligono WHERE id_poligono = 1";
 
 // Run the query and set query result in $result
 // Here $db comes from "db_connection.php"
@@ -20,20 +20,19 @@ $result = $db->query($query);
 
 <?php
 
-//$array = array();
+$listvalues = array();
 
 while($row = $result->fetchArray()){
-$values = array(
-//'type' => 'Feature',
-//'geometry' => array( 
-//'type' => 'Polygon',
-//'coordinates' => array(array(array(
-$row['latitud'], $row['longitud']);
-
-echo json_encode($values);
+$listvalues[] = array($row['latitud'], $row['longitud']);
 }
 
-//echo json_encode($array);
+$values = array(
+'type' => 'Feature',
+'geometry' => array(
+'type' => 'Polygon',
+'coordinates' => array(array($listvalues))));
+
+echo json_encode($values);
 
 ?>
 
