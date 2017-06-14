@@ -72,7 +72,25 @@ if($option){
 }else{
 echo '<tr><th>Debes seleccionar un poligono a consultar</th></tr>';
 }
-				?>               
+
+//echo '<tr><th></th></tr>';
+$jsonfile = file_get_contents('uploads/Poligonox.json');
+$json_data = json_decode($jsonfile, true);
+
+$items = array();
+
+foreach ($json_data['geometries'] as $gvalues) {
+foreach ($gvalues as $coordinates){
+	  $items[] = $coordinates;
+	  
+	  echo $items[0];
+  }
+}
+
+print_r($items);
+
+				?>      
+         
 				
 <!--
 TAREAS PENDIENTES
