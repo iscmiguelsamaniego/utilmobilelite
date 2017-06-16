@@ -77,17 +77,25 @@ echo '<tr><th>Debes seleccionar un poligono a consultar</th></tr>';
 $jsonfile = file_get_contents('uploads/Poligonox.json');
 $json_data = json_decode($jsonfile, true);
 
-$items = array();
+//S$items = array();
+
 
 foreach ($json_data['geometries'] as $gvalues) {
-foreach ($gvalues as $coordinates){
-	  $items[] = $coordinates;
-	  
-	  echo $items[0];
+foreach ($gvalues['coordinates'] as $coordinates){	 		  
+	  while($jvalue = $coordinates){
+		  echo "{$coordinates[0][0]}"." , "."{$coordinates[0][1]}";
+	  }
+/*
+while($rowpolygon = $resultpolygons->fetchArray()){
+  echo "<option value=\"{$rowpolygon['id']}\">";
+        echo $rowpolygon['id'];
+        echo "</option>";
+}
+*/
+	  //echo "{$coordinates[0][0]}"." , "."{$coordinates[0][1]}";
   }
 }
-
-print_r($items);
+//print_r($items);
 
 				?>      
          
